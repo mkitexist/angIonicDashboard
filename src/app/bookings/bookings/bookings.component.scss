@@ -1,0 +1,49 @@
+p {
+  color: white;
+}
+// ion-col {
+//   border: 2px solid red;
+// }
+// .col {
+//   border: 2px solid red;
+// }
+.close:hover {
+  color: rgb(245, 238, 238);
+  transition: 0.5s;
+}
+.close {
+  position: relative;
+  top: -3rem;
+  left: 1.5rem;
+}
+.info {
+  position: relative;
+  bottom: -0.5rem;
+  right: 1.2rem;
+}
+.backgroundd {
+  // --background: #191a1b !important;
+  // background-color: #191a1b !important;
+  // color: #cfe8f1;
+}
+
+ion-label {
+  // color: #cfe8f1 !important;
+}
+ion-item {
+  // --background: #191a1b !important;
+  // color: #cfe8f1 !important;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}

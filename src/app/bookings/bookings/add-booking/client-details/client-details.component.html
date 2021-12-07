@@ -1,0 +1,276 @@
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="12">
+      <form [formGroup]="form" (submit)="onSaveClientDetails()">
+        <ion-grid>
+          <ion-row>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Title</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <ion-label position="floating">Title </ion-label>
+                    <ion-input
+                      [value]="dropValue"
+                      class="dropdown-toggle"
+                      formControlName="title"
+                    >
+                    </ion-input>
+                  </ion-item>
+
+                  <ul
+                    class="dropdown-menu drop-bgcolor"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item drop-bgcolor"
+                        (click)="dropValue = 'pending'"
+                        >Pending</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item drop-bgcolor"
+                        (click)="dropValue = 'Confirmed'"
+                        >Confirmed</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item drop-bgcolor"
+                        (click)="dropValue = 'Cancel'"
+                        >Cancel</a
+                      >
+                    </li>
+                  </ul>
+                  <mat-error
+                    *ngIf="
+                      !form.get('title')?.valid && form.get('title')?.touched
+                    "
+                    >pick one from the list</mat-error
+                  >
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Name</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Name</ion-label>
+                    <ion-input formControlName="name" type="text"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+              <ion-row
+                *ngIf="!form.get('name')?.valid && form.get('name')?.touched"
+              >
+                <ion-col sizeLg="4" class="ps-5 pt-4"></ion-col>
+                <ion-col sizeLg="5">
+                  <p style="color: red">please enter a valid name</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Email</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input formControlName="email" type="email"></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('email')?.valid && form.get('email')?.touched
+                    "
+                    >please enter a valid email</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Phone</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Phone</ion-label>
+                    <ion-input formControlName="phone" type="Phone"></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('phone')?.valid && form.get('phone')?.touched
+                    "
+                    >please enter a valid phone</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Notes</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Notes</ion-label>
+                    <ion-textarea
+                      formControlName="notes"
+                      type="text"
+                    ></ion-textarea>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('notes')?.valid && form.get('notes')?.touched
+                    "
+                    >Description must be between 1 and 180 characters</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Company</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating" type="text"
+                      >company</ion-label
+                    >
+                    <ion-input
+                      formControlName="company"
+                      type="text"
+                    ></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('company')?.valid &&
+                      form.get('company')?.touched
+                    "
+                    >Enter a valid Company name
+                  </mat-error>
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Address</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Address</ion-label>
+                    <ion-input
+                      type="text"
+                      formControlName="address"
+                    ></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('address')?.valid &&
+                      form.get('address')?.touched
+                    "
+                    >Enter a valid address</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">City</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">City</ion-label>
+                    <ion-input type="text" formControlName="city"></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('city')?.valid && form.get('city')?.touched
+                    "
+                    >Enter a valid city name</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">State</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">State</ion-label>
+                    <ion-input type="text" formControlName="state"></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('state')?.valid && form.get('state')?.touched
+                    "
+                    >Enter a valid state
+                  </mat-error>
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Zip</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Zip</ion-label>
+                    <ion-input type="number" formControlName="zip"></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="!form.get('zip')?.valid && form.get('zip')?.touched"
+                    >Enter a valid zip</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4">Country</ion-col>
+                <ion-col sizeLg="5">
+                  <ion-item>
+                    <ion-label position="floating">Country</ion-label>
+                    <ion-input
+                      type="text"
+                      formControlName="country"
+                    ></ion-input>
+                  </ion-item>
+                  <mat-error
+                    *ngIf="
+                      !form.get('country')?.valid &&
+                      form.get('country')?.touched
+                    "
+                    >Enter a valid country</mat-error
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="12">
+              <ion-row>
+                <ion-col sizeLg="4" class="ps-5 pt-4"></ion-col>
+                <ion-col sizeLg="5">
+                  <ion-button type="submit" [disabled]="!form.valid"
+                    >save</ion-button
+                  >
+                  <ion-button type="button" routerLink="/bookings">
+                    cancel</ion-button
+                  >
+                </ion-col>
+                <ion-col sizeLg="3"></ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

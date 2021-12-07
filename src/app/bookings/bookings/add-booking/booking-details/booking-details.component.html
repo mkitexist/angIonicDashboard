@@ -1,0 +1,260 @@
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Date</ion-col>
+            <ion-col sizeLg="9"></ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Status</ion-col>
+            <ion-col sizeLg="9">
+              <ion-col sizeLg="9">
+                <!-- <input
+                  class="dropdown-toggle"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                /> -->
+                <ion-item
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <ion-label position="floating">Status </ion-label>
+                  <ion-input
+                    [value]="statuss"
+                    class="dropdown-toggle"
+                  ></ion-input>
+                </ion-item>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item">Something else here</a>
+                  </li>
+                </ul>
+              </ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Attendees</ion-col>
+            <ion-col sizeLg="9">
+              <ion-col sizeLg="9">
+                <ion-item
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <ion-label position="floating">hiiii </ion-label>
+                  <ion-input [value]="attendees"></ion-input>
+                </ion-item>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item">Something else here</a>
+                  </li>
+                </ul>
+              </ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Payment method</ion-col>
+            <ion-col sizeLg="9">
+              <ion-col sizeLg="9">
+                <ion-item
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <ion-label position="floating">Payment method </ion-label>
+                  <ion-input
+                    [value]="paymentmethod"
+                    class="dropdown-toggle"
+                  ></ion-input>
+                </ion-item>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item">Something else here</a>
+                  </li>
+                </ul>
+              </ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Room</ion-col>
+            <ion-col sizeLg="9">
+              <ion-item
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <ion-label position="floating">Room </ion-label>
+                <ion-input [value]="room" class="dropdown-toggle"></ion-input>
+              </ion-item>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item">Action</a></li>
+                <li><a class="dropdown-item">Another action</a></li>
+                <li>
+                  <a class="dropdown-item">Something else here</a>
+                </li>
+              </ul>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Room price</ion-col>
+            <ion-col sizeLg="9">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">€</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Layout</ion-col>
+            <ion-col sizeLg="9">
+              <ion-col sizeLg="9">
+                <ion-item
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <ion-label position="floating">Layout </ion-label>
+                  <ion-input
+                    [value]="layout"
+                    class="dropdown-toggle"
+                  ></ion-input>
+                </ion-item>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item">Something else here</a>
+                  </li>
+                </ul>
+              </ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Equipment price</ion-col>
+            <ion-col sizeLg="9">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">€</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Duration</ion-col>
+            <ion-col sizeLg="9">
+              <ion-col sizeLg="9">
+                <ion-item
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <ion-label position="floating">Duration </ion-label>
+                  <ion-input
+                    [value]="duration"
+                    class="dropdown-toggle"
+                  ></ion-input>
+                </ion-item>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item">Something else here</a>
+                  </li>
+                </ul>
+              </ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">Food & drinks price</ion-col>
+            <ion-col sizeLg="9">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">€</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col sizeLg="12">
+      <ion-row>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3"></ion-col>
+            <ion-col sizeLg="9">
+              <ion-button>save</ion-button>
+              <ion-button>cancel</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col sizeLg="6">
+          <ion-row>
+            <ion-col sizeLg="3">sub-total</ion-col>
+            <ion-col sizeLg="9"></ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,98 @@
+p {
+  color: white;
+}
+// ion-col {
+//   border: 2px solid red;
+// }
+.header {
+  // --background: #222425 !important;
+  // --background: #191a1b !important;
+  // color: rgb(150, 141, 141);
+  color: #1d1c1c;
+  // color: #cfe8f1;
+  font-size: 1.2em;
+  font-weight: bold;
+
+  font-family: "Ubuntu", sans-serif;
+}
+.header:hover {
+  // --background: #111111 !important;
+  // color: rgb(221, 220, 218);
+  transition: 0.5s;
+}
+.normal {
+  // background-color: #222425 !important;
+  // background-color: #191a1b !important;
+  font-family: "Ubuntu", sans-serif;
+  // border-right: 2px solid #222425;
+
+  // border: 2px solid red;
+}
+.borderRight {
+  // border-right: 2px solid #222425;
+}
+// .imgg {
+//   background-color: #222425;
+// }
+.number {
+  display: block;
+  font-size: 46px;
+  font-weight: bold;
+  color: #2c2828;
+  // color: #cfe8f1;
+
+  line-height: 38px;
+  // text-shadow: 1px 1px 1px #202020;
+  // text-shadow: 1px 1px 1px #191a1b;
+  float: left;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.botomnumber {
+  // display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #313233;
+  // color: #cfe8f1;
+
+  // line-height: 38px;
+  // text-shadow: 1px 1px 1px #202020;
+  // text-shadow: 1px 1px 1px #191a1b;
+  // float: left;
+  // margin-top: 10px;
+  // margin-right: 6px;
+}
+ion-label {
+  font-family: "Ubuntu", sans-serif !important;
+}
+h5 {
+  color: #2b2626;
+  // color: #cfe8f1;
+  font-size: 1.2em;
+  // font-weight: bold;
+  // background-color: #191a1b !important;
+}
+h5:hover {
+  // background-color: #3b3b3b !important;
+  // background-color: #111111 !important;
+  // color: rgb(221, 220, 218);
+  transition: 0.5s;
+}
+.middle {
+  // border-right: 2px solid #202020;
+  // border-bottom: 2px solid #202020;
+}
+ion-item {
+  // --background: #191a1b !important;
+  // color: #cfe8f1;
+}
+ion-card,
+a {
+  color: #303435;
+  text-decoration: none;
+}
+span {
+  // color: #cfe8f1;
+  cursor: pointer;
+}
