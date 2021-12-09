@@ -1,3 +1,4 @@
+import { BookingsService } from 'src/app/bookings/bookings.service';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -16,7 +17,6 @@ export class DashboardComponent implements OnInit {
   time = moment().format('LT');
 
   ngOnInit() {
-
   }
   range = new FormGroup({
     start: new FormControl(),

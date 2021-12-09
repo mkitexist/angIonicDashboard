@@ -1,7 +1,8 @@
 <ion-grid>
   <ion-row>
     <ion-col sizeLg="12">
-      <form [formGroup]="form" (submit)="onSaveClientDetails()">
+      <form [formGroup]="form">
+        <!-- (submit)="onSaveClientDetails()" -->
         <ion-grid>
           <ion-row>
             <ion-col sizeLg="12">
@@ -258,12 +259,12 @@
               <ion-row>
                 <ion-col sizeLg="4" class="ps-5 pt-4"></ion-col>
                 <ion-col sizeLg="5">
-                  <ion-button type="submit" [disabled]="!form.valid"
+                  <!-- <ion-button type="submit" [disabled]="!form.valid"
                     >save</ion-button
                   >
                   <ion-button type="button" routerLink="/bookings">
                     cancel</ion-button
-                  >
+                  > -->
                 </ion-col>
                 <ion-col sizeLg="3"></ion-col>
               </ion-row>

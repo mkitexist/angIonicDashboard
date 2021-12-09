@@ -43,7 +43,37 @@ table {
   width: 100%;
 }
 
-td,
-th {
-  width: 25%;
+table {
+  width: 100%;
+}
+.dinga {
+  position: relative !important;
+  right: -8em !important;
+  bottom: 3em !important;
+}
+
+.mat-cell {
+  // width: 20em !important;
+  // margin-left: 30px !important;
+  text-align: center !important;
+  font-weight: 400 !important;
+}
+.mat-header-cell {
+  width: 20em !important;
+  text-align: center !important;
+  font-weight: 400 !important;
+}
+.input-group {
+  position: relative;
+  top: 2px !important;
+  height: 40px !important;
+  font-weight: 400 !important;
+
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* align-items: center; */
+  width: 100%;
+}
+.cell:last-of-type {
+  padding-right: 1px !important;
 }

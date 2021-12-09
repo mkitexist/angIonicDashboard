@@ -245,37 +245,146 @@
     </ion-col>
 
     <ion-col size-lg="12">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)"
+            >
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>position</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+        <ng-container matColumnDef="room">
+          <th mat-header-cell *matHeaderCellDef>Room</th>
+          <td mat-cell *matCellDef="let element">{{ element.room }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="">Status</th>
+          <td mat-cell *matCellDef="let element" class="ms-5">
+            <div class="input-group">
+              <div
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <ion-input
+                  [value]="element.status"
+                  class="dropdown-toggle"
+                ></ion-input>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    (click)="editValue(element.status)"
+                    >{{ element.status }}</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" #aa (click)="editValue(aa)">
+                    {{
+                      element.status == "confirmed"
+                        ? "cancel"
+                        : element.status == "canceld"
+                        ? "pending"
+                        : element.status == "pending"
+                        ? "cancel"
+                        : "confirm"
+                    }}</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" #bb (click)="editValue(bb)">
+                    {{
+                      element.status == "confirmed"
+                        ? "pending"
+                        : element.status == "canceld"
+                        ? "confirm"
+                        : element.status == "pending"
+                        ? "confirm"
+                        : "cancel"
+                    }}</a
+                  >
+                </li>
+              </ul>
+              <span class="pt-3 dinga">
+                <ion-icon
+                  *ngIf="element.status == 'canceld'"
+                  name="close-circle"
+                ></ion-icon>
+                <ion-icon
+                  *ngIf="element.status == 'confirmed'"
+                  name="checkmark-circle"
+                ></ion-icon>
+                <ion-icon
+                  *ngIf="element.status == 'pending'"
+                  name="cloud-download"
+                ></ion-icon>
+              </span>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <ion-button class="buttonColor">
+              <ion-icon
+                size="small"
+                name="create"
+                (click)="editData()"
+              ></ion-icon>
+            </ion-button>
+            <ion-button class="buttonColor">
+              <ion-icon
+                size="small"
+                name="trash"
+                (click)="deleteData()"
+              ></ion-icon>
+            </ion-button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="selection.toggle(row)"
+        ></tr>
       </table>
     </ion-col>
-    <ion-col sizeLg="12" class="col">
+    <ion-col sizeLg="12" class="">
       <button
         type="button"
         class="btn btn-outline-secondary"

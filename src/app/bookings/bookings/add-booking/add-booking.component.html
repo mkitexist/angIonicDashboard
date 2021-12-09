@@ -1,14 +1,39 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <ion-button class="buttonColor"[disabled]="booking" (click)="booking = true; client = false"
+      <ion-button
+        class="buttonColor"
+        [disabled]="booking"
+        (click)="booking = true; client = false"
         >Booking Details</ion-button
       >
-      <ion-button class="buttonColor" [disabled]="client" (click)="client = true; booking = false"
+      <ion-button
+        class="buttonColor"
+        [disabled]="client"
+        (click)="client = true; booking = false"
         >Client Details</ion-button
       >
     </ion-col>
   </ion-row>
 </ion-grid>
-<app-client-details *ngIf="client"></app-client-details>
-<app-booking-details *ngIf="booking"></app-booking-details>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="userForm" (submit)="onSaveClientDetails()">
+        <app-client-details *ngIf="client"></app-client-details>
+        <app-booking-details *ngIf="booking"></app-booking-details>
+        <ion-col>
+          <ion-row class="ion-text-center" *ngIf="client">
+            <ion-col>
+              <!-- [disabled]="!userForm.valid" -->
+              <ion-button type="submit" [disabled]="!userForm.valid">
+                save
+              </ion-button>
+              <ion-button type="button"> cancel </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>
