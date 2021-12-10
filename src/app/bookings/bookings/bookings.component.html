@@ -138,65 +138,15 @@
                       </ion-col>
                       <ion-col sizeLg="10">
                         <div class="dropdown">
-                          <button
-                            class="
-                              btn btn-secondary
-                              dropdown-toggle
-                              buttonColor
-                              btn-border-none
-                            "
+                          <ion-button
+                            class="buttonColor btn-border-none"
                             type="button"
                             id="dropdownMenuButton2"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            Dropdown button
-                          </button>
-                          <ul
-                            class="dropdown-menu drop-bgcolor"
-                            aria-labelledby="dropdownMenuButton2"
-                          >
-                            <li>
-                              <a class="dropdown-item drop-bgcolor" href="#"
-                                >Pnding</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item drop-bgcolor" href="#"
-                                >Confirmed</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item drop-bgcolor" href="#"
-                                >Cancel</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                  <ion-col sizeLg="6">
-                    <ion-row>
-                      <ion-col sizeLg="2">
-                        <ion-text>Status</ion-text>
-                      </ion-col>
-                      <ion-col sizeLg="10">
-                        <div class="dropdown">
-                          <button
-                            class="
-                              btn btn-secondary
-                              dropdown-toggle
-                              buttonColor
-                              btn-border-none
-                            "
-                            type="button"
-                            id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            Dropdown button
-                          </button>
+                            choose
+                          </ion-button>
                           <ul
                             class="dropdown-menu drop-bgcolor"
                             aria-labelledby="dropdownMenuButton2"
@@ -214,6 +164,47 @@
                             <li>
                               <a class="dropdown-item drop-bgcolor" href="#"
                                 >Large Confernce Room</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                  <ion-col sizeLg="6">
+                    <ion-row>
+                      <ion-col sizeLg="2">
+                        <ion-text>Status</ion-text>
+                      </ion-col>
+                      <ion-col sizeLg="10">
+                        <div class="dropdown">
+                          <ion-button
+                            class="buttonColor btn-border-none"
+                            type="button"
+                            id="dropdownMenuButton2"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            choose
+                          </ion-button>
+
+                          <ul
+                            class="dropdown-menu drop-bgcolor"
+                            aria-labelledby="dropdownMenuButton2"
+                          >
+                            <li>
+                              <a class="dropdown-item drop-bgcolor" href="#"
+                                >Pnding</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item drop-bgcolor" href="#"
+                                >Confirmed</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item drop-bgcolor" href="#"
+                                >Cancel</a
                               >
                             </li>
                           </ul>
@@ -244,8 +235,13 @@
       </div>
     </ion-col>
 
-    <ion-col size-lg="12">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ion-col size-lg="12" >
+      <ion-col size-lg="12" *ngIf="loadSpinner&&ELEMENT_DATA.length==0" >
+        <div class="ion-text-center">
+          <ion-spinner></ion-spinner>
+        </div>
+      </ion-col>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!loadSpinner&&ELEMENT_DATA.length!==0">
         <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox
@@ -315,26 +311,26 @@
                 <li>
                   <a class="dropdown-item" #aa (click)="editValue(aa)">
                     {{
-                      element.status == "confirmed"
+                      element.status == "Confirmed"
                         ? "cancel"
                         : element.status == "canceld"
-                        ? "pending"
-                        : element.status == "pending"
-                        ? "cancel"
-                        : "confirm"
+                        ? "Pending"
+                        : element.status == "Pending"
+                        ? "canceld"
+                        : "Confirmed"
                     }}</a
                   >
                 </li>
                 <li>
                   <a class="dropdown-item" #bb (click)="editValue(bb)">
                     {{
-                      element.status == "confirmed"
-                        ? "pending"
+                      element.status == "Confirmed"
+                        ? "Pending"
                         : element.status == "canceld"
-                        ? "confirm"
-                        : element.status == "pending"
-                        ? "confirm"
-                        : "cancel"
+                        ? "Confirmed"
+                        : element.status == "Pending"
+                        ? "Confirmed"
+                        : "canceld"
                     }}</a
                   >
                 </li>
@@ -345,11 +341,11 @@
                   name="close-circle"
                 ></ion-icon>
                 <ion-icon
-                  *ngIf="element.status == 'confirmed'"
+                  *ngIf="element.status == 'Confirmed'"
                   name="checkmark-circle"
                 ></ion-icon>
                 <ion-icon
-                  *ngIf="element.status == 'pending'"
+                  *ngIf="element.status == 'Pending'"
                   name="cloud-download"
                 ></ion-icon>
               </span>
@@ -366,11 +362,11 @@
                 (click)="editData()"
               ></ion-icon>
             </ion-button>
-            <ion-button class="buttonColor">
+            <ion-button class="buttonColor"   (click)="deleteData(element.id)">
               <ion-icon
                 size="small"
                 name="trash"
-                (click)="deleteData()"
+              
               ></ion-icon>
             </ion-button>
           </td>

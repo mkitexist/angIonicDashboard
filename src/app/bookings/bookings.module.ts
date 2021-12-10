@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
@@ -28,7 +29,8 @@ import { ClientDetailsComponent } from './bookings/add-booking/client-details/cl
     MatTableModule,
     MatDatepickerModule,
     MatPaginatorModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ]
 })
 export class BookingsModule { }

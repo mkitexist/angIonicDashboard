@@ -313,12 +313,12 @@
                   </ion-item>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                      <a class="dropdown-item" (click)="duration = 'Half day'"
+                      <a class="dropdown-item" (click)="duration = 'Half day';priceCalculator('Half day')"
                         >Half day</a
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="duration = 'Full day'">
+                      <a class="dropdown-item" (click)="duration = 'Full day';priceCalculator('Full day')">
                         Full day</a
                       >
                     </li>
@@ -359,7 +359,7 @@
               <ion-row>
                 <ion-col sizeLg="3"></ion-col>
                 <ion-col sizeLg="9">
-                  <ion-button
+                  <!-- <ion-button
                     [disabled]="
                       !form.get('duration')?.valid ||
                       !form.get('room')?.valid ||
@@ -368,8 +368,12 @@
                     "
                     (click)="priceCalculator()"
                     >ceck the price</ion-button
+                  > -->
+                  <ion-button
+                    [disabled]="!form.valid"
+                    (click)="clientForm($event)"
+                    >next</ion-button
                   >
-                  <ion-button [disabled]="!form.valid"(click)="clientForm($event)">next</ion-button>
                   <ion-button>cancel</ion-button>
                 </ion-col>
               </ion-row>
@@ -462,7 +466,7 @@
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">€</span>
                     <input
-                      type="text"
+                      type="niumber"
                       class="form-control"
                       aria-describedby="basic-addon1"
                       formControlName="deposite"

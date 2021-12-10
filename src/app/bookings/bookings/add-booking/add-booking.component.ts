@@ -38,13 +38,13 @@ export class AddBookingComponent implements OnInit {
         duration: new FormControl(null, { validators: [Validators.required, Validators.minLength(3), Validators.maxLength(180)] }),
         status: new FormControl(null, { validators: [Validators.required, Validators.minLength(3)] }),
         paymentMethod: new FormControl(null, { validators: [Validators.required, Validators.minLength(3)] }),
-        roomPrice: new FormControl(null, { validators: [Validators.min(0)] }),
+        roomPrice: new FormControl(0, { validators: [Validators.min(0)] }),
         equipmentPrice: new FormControl(0.00, { validators: [Validators.min(0)] }),
         foodDrinkPrice: new FormControl(0.00, { validators: [Validators.min(0)] }),
-        subtotal: new FormControl(null, { validators: [Validators.min(0)] }),
-        tax: new FormControl(null, { validators: [Validators.min(0)] }),
-        total: new FormControl(null, { validators: [Validators.min(0)] }),
-        deposite: new FormControl(null, { validators: [Validators.min(0)] }),
+        subtotal: new FormControl(0, { validators: [Validators.min(0)] }),
+        tax: new FormControl(0, { validators: [Validators.min(0)] }),
+        total: new FormControl(0, { validators: [Validators.min(0)] }),
+        deposite: new FormControl(0, { validators: [Validators.min(0)] }),
 
 
       })
@@ -58,7 +58,16 @@ export class AddBookingComponent implements OnInit {
     // if (!this.userForm.valid && this.dropValue === "choose") {
     //   return;
     // } else {
-    console.log(this.userForm.value);
+    console.log(this.userForm.value.bookingdetails);
+    console.log(this.userForm.value.clientdetails);
+
     // }
+    let formValues = {
+      ...this.userForm.value.bookingdetails, ...this.userForm.value.clientdetails
+    }
+    console.log("form value", formValues)
+    this.bookingservice.addBooking(formValues).subscribe((e: any) => {
+      console.log(e);
+    })
   }
 }

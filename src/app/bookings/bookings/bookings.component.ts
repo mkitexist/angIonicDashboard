@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { BookingsService } from '../bookings.service';
 // import { VueGoodTable } from 'vue-good-table';
 export interface PeriodicElement {
+  id: string;
   name: string;
   room: string;
   date: string;
@@ -12,13 +14,10 @@ export interface PeriodicElement {
   position: number
 }
 // const ELEMENT_DATA: PeriodicElement[] = [
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "confirmed", },
-  { position: 2, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "pending", },
-  { position: 3, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "canceld", },
-  { position: 4, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "confirmed", },
+// let ELEMENT_DATA: PeriodicElement[] = [
+//   // { id: "1", position: 1, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "confirmed", },
 
-];
+// ];
 
 @Component({
   selector: 'app-bookings',
@@ -26,13 +25,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'room', 'date', 'name', 'total', 'status', 'actions'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  constructor() { }
-  dinga = false;
-  ngOnInit(): void {
 
+  constructor(private bookingService: BookingsService) { }
+  dinga = false;
+  tableData: any;
+  loadSpinner = true;
+  displayedColumns: string[] = [];
+  dataSource: any;
+  selection: any;
+  ELEMENT_DATA: PeriodicElement[] = [
+    // { id: "1", position: 1, room: "dingi", date: 'Hydrogen', name: "dinga", total: 'H', status: "confirmed", },
+
+  ];
+
+  ngOnInit(): void {
+    this.loadSpinner = true;
+   this.fetchingData();
   }
   range = new FormGroup({
     start: new FormControl(),
@@ -65,10 +73,49 @@ export class BookingsComponent implements OnInit {
   editValue(a: any) {
     console.log(a.innerText);
   }
+  fetchingData(){
+     this.bookingService.getBooking().subscribe((e: any) => {
+      console.log("eeeeee", e);
+      let bookingData = e;
+      let totalData: any = [];
+      bookingData.forEach((k: any, i: number) => {
+        totalData.push(
+          {
+            id: k._id,
+            position: i + 1,
+            room: k.room,
+            date: k.date,
+            name: k.name,
+            total: k.total,
+            status: k.status
+          }
+        )
+        this.ELEMENT_DATA = totalData;
+        console.log("ELEMENT_DATA", this.ELEMENT_DATA);
+        console.log("toalData", totalData);
+        this.loadSpinner = false;
+      })
+      this.displayedColumns = ['select', 'room', 'date', 'name', 'total', 'status', 'actions'];
+      this.dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+      this.selection = new SelectionModel<PeriodicElement>(true, []);
+      console.log(bookingData);
+      console.log("tableData", this.tableData)
+
+    })
+    ,
+    ((err:any)=>{
+        this.ELEMENT_DATA=[];
+    })
+  }
   editData() {
 
   }
-  deleteData() {
-
+  // id:string
+  deleteData(id:string) {
+    console.log("id",id);
+    this.bookingService.deleteBooking(id).subscribe((e)=>{
+      console.log(e);
+     this.fetchingData();
+    })
   }
 }

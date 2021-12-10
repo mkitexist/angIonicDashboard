@@ -23,7 +23,7 @@ export class BookingDetailsComponent implements OnInit {
   //   // this.events.push(`${type}: ${event.value}`);
   //   this.date = event.value
   // }
-  priceCalculator() {
+  priceCalculator(durationn: string) {
     console.log(this.form.value);
     console.log(this.form);
     let { attendees,
@@ -48,7 +48,7 @@ export class BookingDetailsComponent implements OnInit {
     }
     let roomPrice = roomPricedetail[room.replace(/\s/g, '')];
     let layoutPrice = layoutPricedetail[layout.replace(/\s/g, '')];
-    let durationPrice = durationPricedetail[duration.replace(/\s/g, '')];
+    let durationPrice = durationPricedetail[durationn.replace(/\s/g, '')];
     let total = (attendees * (roomPrice + layoutPrice)) / durationPrice;
 
     console.log("total", total)
@@ -59,11 +59,11 @@ export class BookingDetailsComponent implements OnInit {
       // roomPrice
       // equipmentPrice
       // foodDrinkPrice
-      subtotal: total.toFixed(2),
-      tax: (total / 10).toFixed(2),
-      total: (total + (total / 10)).toFixed(2),
-      deposite: ((total + (total / 10)) / 10).toFixed(2),
-      roomPrice: total.toFixed(2),
+      subtotal: +total.toFixed(2),
+      tax: +(total / 10).toFixed(2),
+      total: +(total + (total / 10)).toFixed(2),
+      deposite: +((total + (total / 10)) / 10).toFixed(2),
+      roomPrice: +total.toFixed(2),
 
     });
     // attendees,
